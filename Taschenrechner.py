@@ -79,6 +79,34 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, self.chf)
 
+    def chf_to_bolivar(self):
+
+        self.getandreplace()
+        try:
+
+            self.value = eval(self.newtext)
+        except SyntaxError or NameError:
+            self.e.delete(0, END)
+            self.e.insert(0, 'Invalid Input!')
+        else:
+            self.bolivar = self.value * 4.4929
+            self.e.delete(0, END)
+            self.e.insert(0, self.bolivar)
+
+    def bolivar_to_chf(self):
+
+        self.getandreplace()
+        try:
+
+            self.value = eval(self.newtext)
+        except SyntaxError or NameError:
+            self.e.delete(0, END)
+            self.e.insert(0, 'Invalid Input!')
+        else:
+            self.chf = self.value * 0.22
+            self.e.delete(0, END)
+            self.e.insert(0, self.chf)
+
     def clearall(self):
 
         self.e.delete(0, END)
@@ -193,13 +221,21 @@ class calc:
                command=lambda: self.square()).grid(row=3, column=5)
 
         # curencies
-        Button(master, text="$ > chf", width=5, height=3,
+        Button(master, text="$ > chf", width=10, height=3,
                fg="black", bg="grey",
                command=lambda: self.dollar_to_chf()).grid(row=2, column=6)
 
-        Button(master, text="chf > $", width=5, height=3,
+        Button(master, text="chf > $", width=10, height=3,
                fg="black", bg="grey",
                command=lambda: self.chf_to_dollar()).grid(row=1, column=6)
+
+        Button(master, text="chf > bolivar", width=10, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.chf_to_bolivar()).grid(row=3, column=6)
+
+        Button(master, text="bolivar > chf", width=10, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.bolivar_to_chf()).grid(row=4, column=6)
 
 root = Tk()
 
