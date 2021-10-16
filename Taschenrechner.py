@@ -65,6 +65,20 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, self.dollar)
 
+    def dollar_to_chf(self):
+
+        self.getandreplace()
+        try:
+
+            self.value = eval(self.newtext)
+        except SyntaxError or NameError:
+            self.e.delete(0, END)
+            self.e.insert(0, 'Invalid Input!')
+        else:
+            self.chf = self.value * 0.92
+            self.e.delete(0, END)
+            self.e.insert(0, self.chf)
+
     def clearall(self):
 
         self.e.delete(0, END)
@@ -174,14 +188,18 @@ class calc:
                fg="black", bg="grey",
                command=lambda: self.squareroot()).grid(row=3, column=4)
 
-        Button(master, text="chf > $", width=5, height=3,
-               fg="black", bg="grey",
-               command=lambda: self.chf_to_dollar()).grid(row=1, column=6)
-
         Button(master, text="x²", width=5, height=3,
                fg="black", bg="grey",
                command=lambda: self.square()).grid(row=3, column=5)
 
+        # curencies
+        Button(master, text="$ > chf", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.dollar_to_chf()).grid(row=2, column=6)
+
+        Button(master, text="chf > $", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.chf_to_dollar()).grid(row=1, column=6)
 
 root = Tk()
 
