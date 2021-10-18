@@ -61,9 +61,9 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, 'Invalid Input!')
         else:
-            self.dollar = self.value * 1.08
+            dollar = self.value * 1.08
             self.e.delete(0, END)
-            self.e.insert(0, self.dollar)
+            self.e.insert(0, dollar)
 
     def dollar_to_chf(self):
 
@@ -75,9 +75,9 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, 'Invalid Input!')
         else:
-            self.chf = self.value * 0.92
+            chf = self.value * 0.92
             self.e.delete(0, END)
-            self.e.insert(0, self.chf)
+            self.e.insert(0, chf)
 
     def chf_to_bolivar(self):
 
@@ -89,9 +89,9 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, 'Invalid Input!')
         else:
-            self.bolivar = self.value * 4.4929
+            bolivar = self.value * 4.4929
             self.e.delete(0, END)
-            self.e.insert(0, self.bolivar)
+            self.e.insert(0, bolivar)
 
     def bolivar_to_chf(self):
 
@@ -103,9 +103,37 @@ class calc:
             self.e.delete(0, END)
             self.e.insert(0, 'Invalid Input!')
         else:
-            self.chf = self.value * 0.22
+            chf = self.value * 0.22
             self.e.delete(0, END)
-            self.e.insert(0, self.chf)
+            self.e.insert(0, chf)
+
+    def bolivar_to_dollar(self):
+
+        self.getandreplace()
+        try:
+
+            self.value = eval(self.newtext)
+        except SyntaxError or NameError:
+            self.e.delete(0, END)
+            self.e.insert(0, 'Invalid Input!')
+        else:
+            dollar = self.value * 0.24
+            self.e.delete(0, END)
+            self.e.insert(0, dollar)
+
+    def dollar_to_bolivar(self):
+
+        self.getandreplace()
+        try:
+
+            self.value = eval(self.newtext)
+        except SyntaxError or NameError:
+            self.e.delete(0, END)
+            self.e.insert(0, 'Invalid Input!')
+        else:
+            bolivar = self.value * 4.13
+            self.e.delete(0, END)
+            self.e.insert(0, bolivar)
 
     def clearall(self):
 
@@ -160,29 +188,9 @@ class calc:
                fg="black", bg="white",
                command=lambda: self.action('%')).grid(row=4, column=2)
 
-        Button(master, text="7", width=5, height=3,
+        Button(master, text="0", width=5, height=3,
                fg="black", bg="white",
-               command=lambda: self.action('7')).grid(row=1, column=0)
-
-        Button(master, text="8", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action(8)).grid(row=1, column=1)
-
-        Button(master, text="9", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action(9)).grid(row=1, column=2)
-
-        Button(master, text="4", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action(4)).grid(row=2, column=0)
-
-        Button(master, text="5", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action(5)).grid(row=2, column=1)
-
-        Button(master, text="6", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action(6)).grid(row=2, column=2)
+               command=lambda: self.action(0)).grid(row=4, column=0)
 
         Button(master, text="1", width=5, height=3,
                fg="black", bg="white",
@@ -196,9 +204,29 @@ class calc:
                fg="black", bg="white",
                command=lambda: self.action(3)).grid(row=3, column=2)
 
-        Button(master, text="0", width=5, height=3,
+        Button(master, text="4", width=5, height=3,
                fg="black", bg="white",
-               command=lambda: self.action(0)).grid(row=4, column=0)
+               command=lambda: self.action(4)).grid(row=2, column=0)
+
+        Button(master, text="5", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action(5)).grid(row=2, column=1)
+
+        Button(master, text="6", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action(6)).grid(row=2, column=2)
+
+        Button(master, text="7", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action('7')).grid(row=1, column=0)
+
+        Button(master, text="8", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action(8)).grid(row=1, column=1)
+
+        Button(master, text="9", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action(9)).grid(row=1, column=2)
 
         Button(master, text=".", width=5, height=3,
                fg="black", bg="white",
@@ -236,6 +264,14 @@ class calc:
         Button(master, text="bolivar > chf", width=10, height=3,
                fg="black", bg="grey",
                command=lambda: self.bolivar_to_chf()).grid(row=4, column=6)
+
+        Button(master, text="bolivar > dollar", width=12, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.bolivar_to_dollar()).grid(row=1, column=7)
+
+        Button(master, text="dollar > bolivar", width=12, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.dollar_to_bolivar()).grid(row=2, column=7)
 
 root = Tk()
 
