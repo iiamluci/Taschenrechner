@@ -160,6 +160,26 @@ class calc:
                bg="grey", command=lambda: self.equals()).grid(
             row=4, column=4, columnspan=2)
 
+        Button(master, text=".", width=5, height=3,
+               fg="black", bg="white",
+               command=lambda: self.action('.')).grid(row=4, column=1)
+
+        Button(master, text="(", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.action('(')).grid(row=2, column=4)
+
+        Button(master, text=")", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.action(')')).grid(row=2, column=5)
+
+        Button(master, text="√", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.squareroot()).grid(row=3, column=4)
+
+        Button(master, text="x²", width=5, height=3,
+               fg="black", bg="grey",
+               command=lambda: self.square()).grid(row=3, column=5)
+
         Button(master, text='AC', width=5, height=3,
                fg="black", bg="grey",
                command=lambda: self.clearall()).grid(row=1, column=4)
@@ -228,27 +248,6 @@ class calc:
                fg="black", bg="white",
                command=lambda: self.action(9)).grid(row=1, column=2)
 
-        Button(master, text=".", width=5, height=3,
-               fg="black", bg="white",
-               command=lambda: self.action('.')).grid(row=4, column=1)
-
-        Button(master, text="(", width=5, height=3,
-               fg="black", bg="grey",
-               command=lambda: self.action('(')).grid(row=2, column=4)
-
-        Button(master, text=")", width=5, height=3,
-               fg="black", bg="grey",
-               command=lambda: self.action(')')).grid(row=2, column=5)
-
-        Button(master, text="√", width=5, height=3,
-               fg="black", bg="grey",
-               command=lambda: self.squareroot()).grid(row=3, column=4)
-
-        Button(master, text="x²", width=5, height=3,
-               fg="black", bg="grey",
-               command=lambda: self.square()).grid(row=3, column=5)
-
-        # curencies
         Button(master, text="$ > chf", width=10, height=3,
                fg="black", bg="grey",
                command=lambda: self.dollar_to_chf()).grid(row=2, column=6)
